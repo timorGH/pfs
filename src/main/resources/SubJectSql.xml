@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper>
+    <insert id="insert">
+        insert into subject(id,s_name) value(?,?)
+    </insert>
+    <update id="update">
+        update subject set s_name=? where id = ?
+    </update>
+    <delete id="delete">
+        delete from subject where id =?
+    </delete>
+    <select id="selectAllSubject">
+        select * from subject;
+    </select>
+</mapper>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper>
+    <insert id="insert">
+        insert into accounts(id,icategory,classif,remark,addtime,username,money) value(?,?,?,?,?,?,?)
+    </insert>
+    <update id="update">
+        update accounts set icategory=?,classif=?,remark=?,addtime=?,username=?,money=? where id = ?
+    </update>
+    <delete id="delete">
+        delete from accounts where id = ?
+    </delete>
+    <select id="selectAccountsById">
+        select * from accounts where id = ?
+    </select>>
+    <select id="selectAllAccounts">
+        select * from accounts where icategory=? and username = ?
+    </select>
+    <select id="selectAllIcategory">
+        select * from accounts where 1==1
+    </select>
+    <select id="selectAllIcategory">
+        select *
+        from accounts
+        where icategory=? and username = ? limit ?,?
+    </select>
+    <select id="selectSumByIcategory">
+        SELECT
+        SUM(money)
+        FROM
+        accounts
+        where
+        icategory = ? and username = ? and addtime BETWEEN ? AND ?
+    </select>
+    <select id="selectCountByClassif">
+        SELECT
+        COUNT(id)
+        FROM
+        accounts
+        where
+        classif = ? and username = ? and addtime BETWEEN ? AND ?
+    </select>
+    <select id="selectCountByIcateGory">
+        select
+        count(id)
+        from
+        accounts
+        where
+        icategory = ? and username = ? and addtime BETWEEN ? AND ?
+    </select>
+    <select id="selectCountRemarkByClassif">
+        SELECT
+        COUNT(DISTINCT remark)
+        from
+        accounts
+        where
+        classif = ? and username = ?;
+    </select>
+    <select id="selectCountAccountsByIcateGory">
+        select
+        count(id)
+        from
+        accounts
+        where
+        icategory = ? and username = ?
+    </select>
+    <select id="selectClassif">
+        SELECT
+        remark remarkname,
+        (SELECT count(*) from accounts GROUP BY classif HAVING classif = ?)/count(*) proportion
+        FROM
+        accounts
+        where
+        classif = ? and username = ?
+        GROUP BY
+        remark
+        limit ?,?
+    </select>
+</mapper>

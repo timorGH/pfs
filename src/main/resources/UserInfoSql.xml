@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mapper>
+    <insert id = "insert">
+        insert into userinfo(id,username,password,email,telphone,fileurl) value(?,?,?,?,?,?)
+    </insert>
+    <update id = "update">
+        update userinfo set username=?,password=?,email=?,telphone=?,fileurl=? where id=?
+    </update>
+    <delete id = "delete">
+        delete from userinfo where id=?
+    </delete>
+    <select id = "selectLogin">
+        select id,username,password,email,telphone,fileurl from userinfo where username = ? and password = ?
+    </select>
+    <select id = "selectById">
+        select id,username,password,email,telphone,fileurl from userinfo where id = ?
+    </select>
+    <select id = "selectByUserName">
+        select id,username,password,email,telphone,fileurl from userinfo where username = ?
+    </select>
+</mapper>
